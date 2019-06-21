@@ -10,3 +10,6 @@ Links
 =====
 Linode Guides & Tutorials
 https://www.linode.com/docs/
+
+Linode Manager
+https://manager.linode.com/linodes/remote_access/Rockhounding
