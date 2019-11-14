@@ -6,6 +6,40 @@ Copyright (C) 2019 by Raymond E. Marcil <marcilr@gmail.com>
 Linode - server virtualization
 
 
+Thu 14 Nov 2019 11:05:12 AM AKST
+================================
+Access Linode Manager at:
+  https://manager.linode.com/
+
+Login worked no issues.
+
+Linodes tab displays:
+  Linode:    Rockhounding
+  Status:    Running
+  Plan:      Nanode 1GB
+  IP:        173.255.210.242
+  Location:  Fremont, CA, USA
+  Backups:   No - Enable
+  Options:   Dashboard | Remove
+
+
+Opening http://173.255.210.242 displays:
+  Apache2 Debian Default Page
+  It works!
+  Configuration Overview
+    /etc/apache2/
+    |-- apache2.conf
+    |       `--  ports.conf
+    |-- mods-enabled
+    |       |-- *.load
+    |       `-- *.conf
+    |-- conf-enabled
+    |       `-- *.conf
+    |-- sites-enabled
+    |       `-- *.conf
+
+
+
 Links
 =====
 Linode Guides & Tutorials
