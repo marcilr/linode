@@ -8,6 +8,13 @@ Linode related links
 
 Links
 =====
+Getting Started Guide
+Getting Started with Linode
+Connect to Your Linode via SSH
+Linux: You can use a terminal window, regardless of desktop environment
+or window manager.
+https://www.linode.com/docs/getting-started/
+
 Linode Guides & Tutorials
 https://www.linode.com/docs/
 
