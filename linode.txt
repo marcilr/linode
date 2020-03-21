@@ -6,6 +6,60 @@ Copyright (C) 2019 by Raymond E. Marcil <marcilr@gmail.com>
 Linode - server virtualization
 
 
+Public address (Linode Manager > Linodes)
+
+Have linode locked down a bit too much:
+  $ ssh root@173.255.210.242
+  root@173.255.210.242: Permission denied (publickey).
+  $
+
+  $ ssh marcilr@173.255.210.242
+  marcilr@173.255.210.242: Permission denied (publickey).
+  $
+
+
+
+Sat 21 Mar 2020 11:55:00 AM AKDT
+================================
+Have past due linode balance of $5.  Looks like I need to 
+update card on file.
+
+
+Wed 27 Nov 2019 10:26:16 AM AKST
+================================
+o Moved ~/.ssh/config out of way in case of error:
+$ cd ~/.ssh
+$ mv config config-PRIOR-20191127
+$ /etc/init.d/ssh restart
+...
+$
+
+$ ip addr ls
+...
+3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether f2:3c:91:bc:65:2b brd ff:ff:ff:ff:ff:ff
+    inet 173.255.210.242/24 brd 173.255.210.255 scope global eth0
+...
+$
+
+o Working on ssh access to linode:
+
+Can ping just fine:
+$ ping 173.255.210.242
+PING 173.255.210.242 (173.255.210.242) 56(84) bytes of data.
+64 bytes from 173.255.210.242: icmp_seq=1 ttl=54 time=65.3 ms
+64 bytes from 173.255.210.242: icmp_seq=2 ttl=54 time=66.2 ms
+64 bytes from 173.255.210.242: icmp_seq=3 ttl=54 time=64.7 ms
+^C
+--- 173.255.210.242 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 8ms
+rtt min/avg/max/mdev = 64.621/65.196/66.179/0.671 ms
+$ 
+
+o Lish Console works fine:
+https://manager.linode.com
+
+
 Thu 14 Nov 2019 11:05:12 AM AKST
 ================================
 Access Linode Manager at:
