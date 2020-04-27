@@ -32,7 +32,69 @@ Linodes displays:
 
   Regions:     Fremont, CA
   Last Backup: Never
-        
+
+II. On linode dashboard:
+  click Rockhounding machine
+  click Launch Console
+
+III. Rockhounding - Linode Lisg Console window opened
+  with login to machine.  Logged in.
+
+IV. Check debian version:
+
+$ cat /etc/debian_version
+9.9
+$
+
+The version is  behind the lastest 10.3 (as of Mon April 27, 2020)
+
+V. Run update and upgrade:
+
+$ sudo aptitude update
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for marcilr: ***
+...
+$ sudo aptitude upgrade
+Resolving dependencies...                
+The following NEW packages will be installed:
+  linux-image-4.9.0-12-amd64{a} 
+The following packages will be upgraded:
+  apache2 apache2-bin apache2-data apache2-utils base-files curl 
+  debian-archive-keyring e2fslibs e2fsprogs exim4 exim4-base exim4-config 
+  exim4-daemon-light file gettext-base ghostscript git git-all git-arch 
+  git-cvs git-daemon-run git-doc git-el git-email git-gui git-man 
+  git-mediawiki git-svn gitk gitweb grub-common grub-pc grub-pc-bin 
+  grub2-common libcaca0 libcomerr2 libcups2 libcupsimage2 libcurl3 
+  libcurl3-gnutls libdatetime-timezone-perl libexif12 libexpat1 
+  libfreetype6 libfribidi0 libgd3 libglib2.0-0 libglib2.0-data libgs9 
+  libgs9-common libicu57 libidn11 libldap-2.4-2 libldap-common libmagic-mgc 
+  libmagic1 libnghttp2-14 libopenjp2-7 libpam-systemd libperl5.24 
+  libsasl2-2 libsasl2-modules libsasl2-modules-db libss2 libssl-dev 
+  libssl-doc libssl1.0.2 libssl1.1 libsvn-perl libsvn1 libsystemd0 libudev1 
+  libvpx4 linux-image-amd64 linux-libc-dev openssh-client openssh-server 
+  openssh-sftp-server openssl patch perl perl-base perl-modules-5.24 
+  python-apt python-apt-common python3-apt python3-reportbug reportbug sudo 
+  systemd systemd-sysv tzdata udev vim vim-common vim-runtime vim-tiny xxd 
+98 packages upgraded, 1 newly installed, 0 to remove and 4 not upgraded.
+Need to get 122 MB of archives. After unpacking 194 MB will be used.
+Do you want to continue? [Y/n/?] Y
+...
+$
+
+$ cat /etc/debian_version 
+10.3
+$
+
+Upgrade from debian strech 9.12 to buster 10.3
+
+
 
 Wed 27 Nov 2019 10:45:44 AM AKST
 ================================
