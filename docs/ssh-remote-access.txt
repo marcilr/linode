@@ -16,7 +16,23 @@ $
 
 Need to verify ssh keys and such.
 
+I. Login to Linode Cloud Manager at:
+https://cloud.linode.com/
 
+Dashboard displays:
+  Rockhounding
+  Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
+  Fremont, CA
+
+Linodes displays:
+  Linode:      Rockhounding
+               Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
+
+  IP Address:  173.255.210.242
+
+  Regions:     Fremont, CA
+  Last Backup: Never
+        
 
 Wed 27 Nov 2019 10:45:44 AM AKST
 ================================
