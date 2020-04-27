@@ -1,0 +1,72 @@
+ssh-remote-access.txt
+Created Wed 27 Nov 2019 10:45:44 AM AKST
+Copyright (C) 2019 by Raymond E. Marcil <marcilr@gmail.com>
+
+
+ssh remote access to linode
+
+
+Mon 27 Apr 2020 02:24:49 PM AKDT
+================================
+ssh remote access to linode is failing:
+
+$ ssh linode
+marcilr@72.14.191.202: Permission denied (publickey).
+$ 
+
+Need to verify ssh keys and such.
+
+
+
+Wed 27 Nov 2019 10:45:44 AM AKST
+================================
+I. Login to Linode Cloud Manager at:
+https://cloud.linode.com/
+
+II. Find your Linode’s IP AddressPermalink
+Your Linode has a unique IP address that identifies it to 
+other devices and users on the internet.
+  1. Click the Linodes menu item in the Cloud Manager’s left hand navigation.
+
+  2. Find your Linode, click on it’s name and navigate to Networking.
+     click Rockhounding
+     Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
+
+     click Networking tab
+
+  3. Your IPv4 and IPv6 addresses appear under the IPv4 and IPv6 sections.
+  IP Addresses:
+  
+  IPv4:            173.255.210.242
+  default gateway: 173.255.210.1
+
+  IPv6: 2600:3c01::f03c:91ff:febc:652b
+
+  Still denied at:
+  $ ssh 173.255.210.242
+  marcilr@173.255.210.242: Permission denied (publickey).
+  $ 
+
+  4. Log in Using SSH
+  Once you have the IP address and an SSH client, 
+  you can log in via SSH. The following instructions 
+  are written for Linux and macOS.  If you’re using
+  PuTTY on Windows, follow these instructions.
+
+  https://www.linode.com/docs/getting-started/#connect-to-your-linode-via-ssh
+
+
+Links
+=====
+Cloud Manager’s
+https://cloud.linode.com/
+
+Connect to Your Linode via SSH         
+https://www.linode.com/docs/getting-started/#connect-to-your-linode-via-ssh
+
+Getting Started Guide
+Getting Started with Linode
+Connect to Your Linode via SSH
+Linux: You can use a terminal window, regardless of desktop environment
+or window manager.
+https://www.linode.com/docs/getting-started/
