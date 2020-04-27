@@ -89,10 +89,16 @@ Do you want to continue? [Y/n/?] Y
 $
 
 $ cat /etc/debian_version 
-10.3
+9.12
 $
 
-Upgrade from debian strech 9.12 to buster 10.3 looks good.
+VI. Upgrade distribution from debian strech 9.12 
+to buster 10.3.
+
+
+
+--Upgrade to Debian Version 10 Buster
+  https://phoenixnap.com/kb/how-to-upgrade-debian-9-stretch-to-debian-10-buster
 
 
 
