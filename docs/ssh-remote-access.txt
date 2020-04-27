@@ -92,7 +92,7 @@ $ cat /etc/debian_version
 10.3
 $
 
-Upgrade from debian strech 9.12 to buster 10.3
+Upgrade from debian strech 9.12 to buster 10.3 looks good.
 
 
 
