@@ -95,10 +95,156 @@ $
 VI. Upgrade distribution from debian strech 9.12 
 to buster 10.3.
 
+1. First, create a backup copy of the /etc/apt/sources.list file:
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak-20200427
+
+2. Then, open the file for editing (we are using GNU nano for text editing):
+  sudo nano /etc/apt/sources.list
+
+3. Change all the references in this file from Stretch to Buster. The entries should appear as follows:
+  deb http://deb.debian.org/debian debian buster main
+  deb http://deb.debian.org/debian buster-updates main
+  deb http://deb.debian.org/debian buster/updates main
+
+  NOTE: Used sed to update stretch to buster:
+    $ cd /etc/apt/
+    $ sed -i 's/stretch/buster/g' sources.list
+
+4. Update the local package lists:
+  $ sudo aptitude update
+  Hit http://deb.debian.org/debian-security buster/updates InRelease
+  Hit http://security.debian.org/debian-security buster/updates InRelease     
+  Hit http://deb.debian.org/debian buster-updates InRelease
+  Ign http://dl.google.com/linux/chrome/deb stable InRelease            
+  Get: 1 http://dl.google.com/linux/chrome/deb stable Release [943 B]
+  Get: 2 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B]
+  Hit http://ftp.us.debian.org/debian buster InRelease               
+  Err http://dl.google.com/linux/chrome/deb stable Release.gpg
+    The following signatures couldn't be verified because the public key \
+  is not available: NO_PUBKEY 78BD65473CB3BD13
+  Fetched 819 B in 0s (1,304 B/s)
+  W: An error occurred during the signature verification. The repository \
+  is not updated and the previous index files will be used. \
+  GPG error: http://dl.google.com/linux/chrome/deb stable Release: \
+  The following signatures couldn't be verified because the \
+  public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  W: Failed to fetch http://dl.google.com/linux/chrome/deb/dists/\
+  stable/Release.gpg: The following signatures couldn't be verified \
+  because the public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  W: Some index files failed to download. They have been ignored, \
+  or old ones used instead.
+                                         
+  $ 
+
+  To fix the above error (on Rockhounding linode):
+    $ sudo gpg --keyserver subkeys.pgp.net --recv-keys 78BD65473CB3BD13
+    gpg: directory '/root/.gnupg' created
+    gpg: keybox '/root/.gnupg/pubring.kbx' created
+    ...
+    This command did not complete.
+
+  --SecureApt 
+    All about secure apt
+    https://wiki.debian.org/SecureApt
+
+  Hence update with no authentication:
+  $ sudo aptitude update
+     This command did not work on linode:
+  
+  $ sudo aptitude update
+  ...
+  Get: 2 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B]
+  Err http://dl.google.com/linux/chrome/deb stable Release.gpg
+    The following signatures couldn't be verified because the \
+  public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  Fetched 819 B in 0s (1,367 B/s)
+  W: An error occurred during the signature verification. \
+  The repository is not updated and the previous index files \
+  will be used. GPG error: http://dl.google.com/linux/chrome/deb \
+  stable Release: The following signatures couldn't be verified \
+  because the public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  W: Failed to fetch http://dl.google.com/linux/chrome/deb/dists/\
+  stable/Release.gpg: The following signatures couldn't be verified \
+  because the public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  W: Some index files failed to download. They have been ignored, \
+  or old ones used instead.
+
+  $                                         
+
+  Didn't get keys ignored for update.  
+
+
+5. Next, run updates on the software packages to prepare
+   for the operating system upgrade:
+  $ sudo apt-get upgrade
+  ...
+  Get: 27 http://ftp.us.debian.org/debian buster/non-free Translation-en [88.7 kB]
+  Fetched 23.2 MB in 7s (3,298 kB/s)
+  W: An error occurred during the signature verification. \
+  The repository is not updated and the previous index files \
+  will be used. GPG error: http://dl.google.com/linux/chrome/deb \
+  stable Release: The following signatures couldn't be verified \
+  because the public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  W: Failed to fetch http://dl.google.com/linux/chrome/deb/dists/\
+  stable/Release.gpg: The following signatures couldn't be verified \
+  because the public key is not available: NO_PUBKEY 78BD65473CB3BD13
+  W: Some index files failed to download. They have been ignored, \
+  or old ones used instead.
+                                         
+  Current status: 705 (+705) upgradable, 57119 (+57000) new.
+  $
+
+  To fix above GPG  error:
+  $ gpg --keyserver subkeys.pgp.net --recv-keys 55BE302B
+  gpg: keybox '/home/marcilr/.gnupg/pubring.kbx' created
+  
+  gpg: keyserver receive failed: Network is unreachable
+  $
+
+  or
+
+  $ gpg --keyserver subkeys.pgp.net --recv-keys 55BE302B
+  gpg: keyserver receive failed: Connection timed out
+  $ 
+
+  How do I bypass/ignore the gpg signature checks of apt?
+  
+  Pass the --allow-unauthenticated option to apt-get as in:
+
+  sudo apt-get --allow-unauthenticated upgrade
+
+  From tha manual page of apt-get:
+
+      --allow-unauthenticated
+
+      Ignore if packages can't be authenticated and don't 
+      prompt about it. This is useful for tools like pbuilder. 
+      Configuration Item: APT::Get::AllowUnauthenticated.
+
+  You can make this setting permanent by using your own config 
+  file at /etc/apt/apt.conf.d/ dir.  The filename can be 99myown
+  and it may contain this line:
+
+      APT::Get::AllowUnauthenticated "true";
+
+  In this way, you don't need to use the option every time you
+  want to install software.  Note: I do not recommend setting
+  this option by default, it bypasses signature checks that
+  could allow an adversary to compromise your computer.
+
+  --shareimprove this answer
+    edited Oct 10 '13 at 7:50
+    answered Nov 1 '11 at 12:55
+    Lekensteyn
+    https://askubuntu.com/questions/74345/how-do-i-bypass-ignore-the-gpg-signature-checks-of-apt
+
+  For upgrade used:
+    $ sudo apt-get --allow-unauthenticated upgrade   <=== Used this
 
 
 --Upgrade to Debian Version 10 Buster
   https://phoenixnap.com/kb/how-to-upgrade-debian-9-stretch-to-debian-10-buster
+
 
 
 
