@@ -8,6 +8,12 @@ ssh remote access to linode
 
 Mon 27 Apr 2020 02:24:49 PM AKDT
 ================================
+Linode Manager shows:
+
+IP address: 173.255.210.242
+       mac: 2600:3c01:f03c:91ff:febc:652b
+
+
 ssh remote access to linode is failing:
 
 $ ssh linode
