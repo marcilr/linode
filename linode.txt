@@ -18,6 +18,26 @@ Have linode locked down a bit too much:
   $
 
 
+Tue 28 Apr 2020 07:29:59 PM AKDT
+================================
+Opening http://173.255.210.242 displays:
+  Apache2 Debian Default Page
+  It works!
+  Configuration Overview
+
+    /etc/apache2/
+    |-- apache2.conf
+    |       `--  ports.conf
+    |-- mods-enabled
+    |       |-- *.load
+    |       `-- *.conf
+    |-- conf-enabled
+    |       `-- *.conf
+    |-- sites-enabled
+    |       `-- *.conf
+
+Looks good!
+
 
 Sat 21 Mar 2020 11:55:00 AM AKDT
 ================================
@@ -26,6 +46,7 @@ update card on file.
 
 Billing at:
   https://cloud.linode.com/account/billing
+
 
 Wed 27 Nov 2019 10:26:16 AM AKST
 ================================
