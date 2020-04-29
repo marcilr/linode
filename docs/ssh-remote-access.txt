@@ -8,36 +8,37 @@ ssh remote access to linode
 
 Mon 27 Apr 2020 02:24:49 PM AKDT
 ================================
+Fixed by updating linode IP address in ~/.ssh/config
+from to 173.255.210.242 from prior 72.14.191.202
+ssh to linode now works!
+
 Linode Manager shows:
-
-IP address: 173.255.210.242
-       mac: 2600:3c01:f03c:91ff:febc:652b
-
+  IP address: 173.255.210.242
+         mac: 2600:3c01:f03c:91ff:febc:652b
 
 ssh remote access to linode is failing:
+  $ ssh linode
+  marcilr@72.14.191.202: Permission denied (publickey).
+  $ 
 
-$ ssh linode
-marcilr@72.14.191.202: Permission denied (publickey).
-$ 
-
-Need to verify ssh keys and such.
+  Need to verify ssh keys and such.
 
 I. Login to Linode Cloud Manager at:
-https://cloud.linode.com/
+  https://cloud.linode.com/
 
-Dashboard displays:
-  Rockhounding
-  Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
-  Fremont, CA
+  Dashboard displays:
+    Rockhounding
+    Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
+    Fremont, CA
 
-Linodes displays:
-  Linode:      Rockhounding
-               Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
+  Linodes displays:
+    Linode:      Rockhounding
+                 Debian 8, Nanode 1GB: 1 CPU, 25GB Storage, 1GB RAM
 
-  IP Address:  173.255.210.242
+    IP Address:  173.255.210.242
 
-  Regions:     Fremont, CA
-  Last Backup: Never
+    Regions:     Fremont, CA
+    Last Backup: Never
 
 II. On linode dashboard:
   click Rockhounding machine
